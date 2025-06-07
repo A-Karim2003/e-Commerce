@@ -17,12 +17,44 @@ setInterval(() => {
 
 // ----------------------------------------
 
+const controls = document.querySelector(".controls");
 const cube = document.querySelector(".cube");
 let angle = 0;
 
+let animationId;
 function spinCube() {
-  angle += 1;
+  angle += 0.5;
   cube.style.transform = `rotateY(${angle}deg)`;
-  requestAnimationFrame(spinCube);
+  animationId = requestAnimationFrame(spinCube);
 }
+
 spinCube();
+
+//* if user hovers over controls, animation stops
+
+controls.addEventListener("mouseenter", (e) => {
+  cancelAnimationFrame(animationId);
+});
+controls.addEventListener("mouseleave", () => {
+  spinCube();
+});
+
+//? add feature for controls
+
+let x = 0,
+  y = 0,
+  z = 0;
+
+controls.addEventListener("click", (e) => {
+  const button = e.target.closest("i");
+  if (!button) return;
+
+  if (button.classList.contains("top-x-control")) x += 25;
+  if (button.classList.contains("bottom-x-control")) x -= 25;
+  if (button.classList.contains("left-y-control")) y -= 25;
+  if (button.classList.contains("right-y-control")) y += 25;
+  if (button.classList.contains("top-z-control")) z -= 25;
+  if (button.classList.contains("bottom-z-control")) z += 25;
+
+  cube.style.transform = `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
+});

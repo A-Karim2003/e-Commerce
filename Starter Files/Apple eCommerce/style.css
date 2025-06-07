@@ -15,6 +15,16 @@ html {
   --primary-color: #62dae6;
   --white-color: white;
   --black-color: black;
+
+  --banner-heading-size: 12rem;
+  --banner-quote-size: 4rem;
+}
+
+@media (max-height: 768px), (max-width: 1200px) {
+  :root {
+    --banner-heading-size: 8rem;
+    --banner-quote-size: 2.5rem;
+  }
 }
 
 .section-1 {
@@ -65,14 +75,20 @@ header i {
   justify-content: space-around;
 }
 
+.banner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .section-1-banner h1 {
-  font-size: 12rem;
+  font-size: var(--banner-heading-size);
   font-weight: 300;
   text-transform: uppercase;
 }
 
 .section-1-banner p {
-  font-size: 4rem;
+  font-size: var(--banner-quote-size);
   font-weight: 400;
   letter-spacing: 0.2rem;
   margin: 2rem 0;
@@ -141,6 +157,7 @@ header i {
   height: 45rem;
   transform-style: preserve-3d;
   transform: rotateY(90deg);
+  transition: 0.5s;
 }
 
 .front-side,
@@ -195,7 +212,6 @@ header i {
 .back-side i {
   font-size: 10rem;
   transform: rotateY(180deg);
-  /* box-shadow: 1px 1px 2px #aaa, -1px -1px 2px #aaa; */
 }
 
 .back-side::before,
