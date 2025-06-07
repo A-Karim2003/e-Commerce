@@ -1,0 +1,287 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: "Work Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --primary-color: #62dae6;
+  --white-color: white;
+  --black-color: black;
+}
+
+.section-1 {
+  width: 100%;
+  height: 100vh;
+  clip-path: polygon(100% 0, 100% 94%, 32% 100%, 0 100%, 0 0);
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+}
+
+/* Logo */
+header i {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 6rem;
+}
+
+.navbar {
+  display: flex;
+  gap: 2rem;
+  padding-right: 12rem;
+}
+
+/* Nav links */
+.navbar a {
+  font-size: 2rem;
+  color: black;
+  transition: 0.4s;
+}
+
+.navbar a:hover {
+  transform: scale(1.2);
+}
+
+/* Banner */
+
+.section-1-banner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.section-1-banner h1 {
+  font-size: 12rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.section-1-banner p {
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  margin: 2rem 0;
+}
+
+.section-1-banner small {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+}
+.section-1-banner button {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  margin-top: 2rem;
+  background-color: black;
+  color: var(--primary-color);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  clip-path: polygon(
+    50% 0%,
+    81% 5%,
+    100% 0,
+    100% 100%,
+    80% 95%,
+    50% 100%,
+    20% 95%,
+    0 100%,
+    0 0,
+    23% 5%
+  );
+  transition: 0.5s;
+}
+
+.section-1-banner button:hover {
+  clip-path: polygon(
+    40% 15%,
+    77% 15%,
+    100% 10%,
+    100% 90%,
+    75% 85%,
+    40% 85%,
+    30% 100%,
+    0 50%,
+    0 50%,
+    30% 0
+  );
+}
+
+/* Cube (phone) */
+
+.cube-wrapper {
+  perspective: 100rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 2rem;
+}
+
+.cube {
+  width: 20rem;
+  height: 45rem;
+  transform-style: preserve-3d;
+  transform: rotateY(90deg);
+}
+
+.front-side,
+.back-side {
+  width: 100%;
+  height: 100%;
+  background-color: #fee;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.front-side {
+  padding: 2.5rem;
+  transform: translateZ(5rem);
+}
+
+.front-side::before,
+.front-side::after {
+  content: "";
+  background-color: #fee;
+  width: 100%;
+  height: 10rem;
+  position: absolute;
+}
+
+.front-side::before {
+  top: 0;
+  left: 0;
+  transform: rotateX(-90deg);
+  transform-origin: top;
+}
+.front-side::after {
+  bottom: 0;
+  left: 0;
+  transform: rotateX(90deg);
+  transform-origin: bottom;
+}
+
+.front-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.back-side {
+  transform: translateZ(-5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-side i {
+  font-size: 10rem;
+  transform: rotateY(180deg);
+  /* box-shadow: 1px 1px 2px #aaa, -1px -1px 2px #aaa; */
+}
+
+.back-side::before,
+.back-side::after {
+  content: "iphone";
+  width: 10rem;
+  height: 100%;
+  background-color: #fee;
+
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: red;
+}
+
+.back-side::before {
+  left: 0;
+  right: 0;
+  transform: rotateY(-90deg);
+  transform-origin: left;
+}
+
+.back-side::after {
+  top: 0;
+  right: 0;
+  transform: rotateY(90deg);
+  transform-origin: right;
+}
+
+/* controls */
+
+.controls {
+  margin-top: 2rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  position: relative;
+  background-color: #051212;
+  border: solid;
+}
+
+.controls i {
+  color: #62dae6;
+  position: absolute;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.controls i:hover {
+  opacity: 1;
+}
+
+.bottom-x-control {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.top-x-control {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.left-y-control {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.right-y-control {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.top-z-control {
+  top: 0;
+  right: 0;
+  transform: rotate(45deg) translateY(90%);
+}
+.bottom-z-control {
+  bottom: 10px;
+  left: 10px;
+  transform: rotate(40deg);
+}
