@@ -58,3 +58,29 @@ controls.addEventListener("click", (e) => {
 
   cube.style.transform = `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
 });
+
+// Section 3
+const section3 = document.querySelector(".section-3");
+
+// 2. Define the callback function
+const observerCallback = (entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      console.log("Entered the section");
+
+      // Optional: Stop observing if you only want the effect to happen once
+      observer.unobserve(entry.target);
+    }
+  });
+};
+
+// 3. Create the observer with options
+const observerOptions = {
+  root: null, // viewport
+  threshold: 0.2, // 50% of element needs to be visible
+};
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+// 4. Start observing
+observer.observe(section3);
