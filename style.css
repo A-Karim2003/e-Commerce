@@ -748,9 +748,24 @@ header i {
 /* footer */
 
 footer {
-  border: solid;
   padding: 5rem 0;
 }
 
 .footer-nav-container {
+  margin: 0 auto;
+  max-width: 80rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-nav-container img {
+  width: 8rem;
+}
+
+.copywrite {
+  margin-top: 8rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
