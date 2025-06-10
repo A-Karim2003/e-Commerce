@@ -61,14 +61,14 @@ controls.addEventListener("click", (e) => {
 
 // Section 3
 const section3 = document.querySelector(".section-3");
+const section3content = document.querySelector(".section-3-content");
 
 // 2. Define the callback function
 const observerCallback = (entries, observer) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      console.log("Entered the section");
-
-      // Optional: Stop observing if you only want the effect to happen once
+      section3content.classList.add("change");
+      // ensures the element is only observed once
       observer.unobserve(entry.target);
     }
   });
@@ -77,10 +77,49 @@ const observerCallback = (entries, observer) => {
 // 3. Create the observer with options
 const observerOptions = {
   root: null, // viewport
-  threshold: 0.2, // 50% of element needs to be visible
+  threshold: 0.5, // 50% of element needs to be visible
 };
 
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 
 // 4. Start observing
 observer.observe(section3);
+
+/*----------------Watches----------------------*/
+
+const watchControl = document.querySelectorAll(".watch-control");
+const watchBands = document.querySelector(".watch-bands");
+const watchCases = document.querySelector(".watch-cases");
+
+let xOffset = 0,
+  yOffset = 0;
+
+watchControl.forEach((watch) => {
+  watch.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const button = e.target.closest(".watch-control");
+    if (!button) return;
+
+    if (button.classList.contains("watch-top-control")) {
+      if (yOffset < 140) yOffset += 35;
+      watchCases.style.transform = `translateY(${yOffset}rem)`;
+    }
+
+    if (button.classList.contains("watch-bottom-control")) {
+      if (yOffset > -140) yOffset -= 35;
+      watchCases.style.transform = `translateY(${yOffset}rem)`;
+    }
+
+    if (button.classList.contains("watch-left-control")) {
+      if (xOffset < 140) xOffset += 35;
+      watchBands.style.transform = `translateX(${xOffset}rem)`;
+    }
+
+    if (button.classList.contains("watch-right-control")) {
+      if (xOffset > -140) xOffset -= 35;
+      watchBands.style.transform = `translateX(${xOffset}rem)`;
+    }
+    console.log(xOffset, yOffset);
+  });
+});
